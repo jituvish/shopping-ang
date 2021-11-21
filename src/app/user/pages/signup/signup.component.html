@@ -1,0 +1,113 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <form [formGroup]="userReg">
+                    <div class="card-header">
+                        <h2>User Registration</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input [ngClass]="{'is-invalid' : submitCheck && userReg.controls.name.errors}" formControlName="name" type="text" class="form-control" />
+                            <div *ngIf="submitCheck && userReg.controls.name.errors" class="invalid-feedback">
+                                <div *ngIf="userReg.controls.name.errors.required">
+                                    Please Insert youre Full Name
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Username/Email</label>
+                            <input [ngClass]="{'is-invalid' : submitCheck && userReg.controls.username.errors}" formControlName="username" type="text" class="form-control" />
+                            <div *ngIf="submitCheck && userReg.controls.username.errors" class="invalid-feedback">
+                                <div *ngIf="userReg.controls.username.errors.required">
+                                    Please Insert youre Username/Email 
+                                </div>
+                                <div *ngIf="userReg.controls.username.errors.email">
+                                    Email Id is not correct
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input [ngClass]="{'is-invalid' : submitCheck && userReg.controls.password.errors}" formControlName="password" type="text" class="form-control" />
+                            <div *ngIf="submitCheck && userReg.controls.password.errors" class="invalid-feedback">
+                                <div *ngIf="userReg.controls.password.errors.required">
+                                    Please Insert youre Password
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Re-Password</label>
+                            <input [ngClass]="{'is-invalid' : submitCheck && userReg.controls.re_password.errors}" formControlName="re_password" type="text" class="form-control" />
+                            <div *ngIf="submitCheck && userReg.controls.re_password.errors" class="invalid-feedback">
+                                <div *ngIf="userReg.controls.re_password.errors.required">
+                                    Please Insert youre Re_Password
+                                </div>
+                                <div *ngIf="userReg.controls.re_password.errors.reErr">
+                                    Password and Re_password Should be Same 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Contact</label>
+                            <input [ngClass]="{'is-invalid' : submitCheck && userReg.controls.contact.errors}" formControlName="contact" type="text" class="form-control" />
+                            <div *ngIf="submitCheck && userReg.controls.contact.errors" class="invalid-feedback">
+                                <div *ngIf="userReg.controls.contact.errors.required">
+                                    Please Insert your Contact
+                                </div>
+                                <div *ngIf="userReg.controls.contact.errors.conErr">
+                                    Please Contact Number grether then 10 Digit
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <textarea [ngClass]="{'is-invalid' : submitCheck && userReg.controls.address.errors}" formControlName="address" class="form-control"></textarea>
+                            <div *ngIf="submitCheck && userReg.controls.address.errors" class="invalid-feedback">
+                                <div *ngIf="userReg.controls.address.errors.required">
+                                    Please Insert youre Address
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <br >
+                            <input [ngClass]="{'is-invalid' : submitCheck && userReg.controls.gender.errors}" type="radio" value="male" formControlName="gender" > Male
+                            <input [ngClass]="{'is-invalid' : submitCheck && userReg.controls.gender.errors}" type="radio" value="female" formControlName="gender" > Female
+                            <input [ngClass]="{'is-invalid' : submitCheck && userReg.controls.gender.errors}" type="radio" value="other" formControlName="gender" > Other
+                            <div *ngIf="submitCheck && userReg.controls.gender.errors" class="invalid-feedback">
+                                <div *ngIf="userReg.controls.gender.errors.required">
+                                    Please Insert youre Gender
+                                </div>
+                                <div *ngIf="userReg.controls.gender.errors.genderErrorMsg">
+                                    Select Only Male
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Select City</label>
+                            <select [ngClass]="{'is-invalid' : submitCheck && userReg.controls.city.errors}" formControlName="city" class="form-control">
+                                <option value="">Select</option>
+                                <option value="indore">Indore</option>
+                                <option value="bhopal">Bhopal</option>
+                                <option value="indore">Indore</option>
+                                <option value="dewas">Dewas</option>
+                                <option value="ujjain">Ujjain</option>
+                            </select>
+                            <div *ngIf="submitCheck && userReg.controls.city.errors" class="invalid-feedback">
+                                <div *ngIf="userReg.controls.city.errors.required">
+                                    Please Insert youre City
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <button type="submit" (click)="save()" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

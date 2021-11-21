@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <form [formGroup]="addUser">
+                    <div class="card-header">
+                        <h2>Ragistration Form</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input formControlName="name" [ngClass]="{'is-invalid' : isSubmit && addUser.controls.name.errors}" type="text" class="form-control" />
+                            <div class="invalid-feedback" *ngIf="isSubmit && addUser.controls.name.errors">
+                                <div *ngIf="addUser.controls.name.errors.required">
+                                    Please Insert Name
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Images Upload</label>
+                            <input #images formControlName="image" [ngClass]="{'is-invalid' : isSubmit && addUser.controls.image.errors}" type="file" class="form-control" />
+                            <div class="invalid-feedback" *ngIf="isSubmit && addUser.controls.image.errors">
+                                <div *ngIf="addUser.controls.image.errors.required">
+                                    Please Select Images
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>City</label>
+                            <select formControlName="city" [ngClass]="{'is-invalid' : isSubmit && addUser.controls.city.errors}" class="form-control">
+                                <option value="">Select City</option>
+                                <option value="indore">Indore</option>
+                                <option value="bhopal">Bhopal</option>
+                                <option value="ujjain">Ujjain</option>
+                                <option value="dewas">Dewas</option>
+                                <option value="sehore">Sehore</option>
+                                <option value="rajisthan">Rajisthan</option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="isSubmit && addUser.controls.city.errors">
+                                <div *ngIf="addUser.controls.city.errors.required">
+                                    Please Select City 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="form-group">
+                            <input type="submit" (click)="save(images)" value="Submit" class="btn btn-primary" /> 
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div *ngIf="showMsg" class="alert alert-outline-success">
+                New Product Add Successfully ! <a href="#" class="close" data-dismiss="alert">X</a>
+            </div>
+            <div class="card">
+                <form [formGroup]="product">
+                    <div class="card-header">
+                        New Product
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Product Name</label>
+                            <input formControlName="name" [ngClass]="{'is-invalid' : isSubmit && product.controls.name.errors}" type="text" class="form-control" />
+                            <div class="invalid-feedback" *ngIf="isSubmit && product.controls.name.errors">
+                                <div *ngIf="product.controls.name.errors.required">
+                                    Please Insert Product Name
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Product Price </label>
+                            <input [ngClass]="{'is-invalid' : isSubmit && product.controls.price.errors}" type="text" class="form-control" formControlName="price" />
+                            <div class="invalid-feedback" *ngIf="isSubmit && product.controls.price.errors">
+                                <div *ngIf="product.controls.price.errors.required">
+                                    Please Insert Product Price
+                                </div>
+                                <div *ngIf="product.controls.price.errors.numErr">
+                                    Insert Only Price Number
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Product Discount</label>
+                            <input [ngClass]="{'is-invalid' : isSubmit && product.controls.discount.errors}" type="text" class="form-control" formControlName="discount" />
+                            <div class="invalid-feedback" *ngIf="isSubmit && product.controls.discount.errors">
+                                <div *ngIf="product.controls.discount.errors.required">
+                                    Please Insert Product Name
+                                </div>
+                                <div *ngIf="product.controls.discount.errors.disNum">
+                                    Insert Only Discount Number 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Product Category</label>
+                            <input [ngClass]="{'is-invalid' : isSubmit && product.controls.category.errors}" type="text" class="form-control" formControlName="category" />
+                            <div class="invalid-feedback" *ngIf="isSubmit && product.controls.category.errors">
+                                <div *ngIf="product.controls.category.errors.required">
+                                    Please Insert Product Name
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="form-group">
+                            <input type="submit" value="Add" (click)="submit()" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <a routerLink="/admin/product/add" class="btn btn-primary">Add New Product</a>
+            <table class="table table-hover table-bordered table-stripped table-dark mt-2">
+                <tr>
+                    <th>S.No.</th>
+                    <th>Product Name</th>
+                    <th>Product Price</th>
+                    <th>Product Discount</th>
+                    <th>Product Category</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <tr *ngFor="let p of allProduct; let n = index">
+                    <td>{{ n+1 }}</td>
+                    <td>{{ p.name }}</td>
+                    <td>{{ p.price }}</td>
+                    <td>{{ p.discount }}</td>
+                    <td>{{ p.category }}</td>
+                    <td><a routerLink="/admin/product/edit/{{ p._id }}" class="btn btn-outline-warning btn-sm">Edit</a></td>
+                    <td><button class="btn btn-outline-danger btn-sm" (click)="askDelete(p)" data-toggle="modal" data-target="#delModal">Delete</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="delModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Delete Product
+
+            </div>
+            <div class="modal-body">
+                Are you sure want to Delete This <b *ngIf="tempProduct">{{ tempProduct.name }}</b>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" (click)="delete()" data-dismiss="modal">Delete</button>
+                <button class="btn btn-dark" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

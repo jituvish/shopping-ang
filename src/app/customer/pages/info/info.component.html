@@ -1,0 +1,28 @@
+<br >
+<br >
+<br >
+
+
+<h2 #h>Jitendra</h2>
+<button (click)="demo(h)">OK</button>
+<br >
+<br >
+<br >
+<input (mouseover)="demo2(text)" type="text" #text />
+<br >
+<br >
+<br >
+<img src="./assets/images/1.jpg" height="200" width="200" #image (click)="demo4(image)">
+<br >
+<br >
+<br >
+<input type="file" #file />
+<br >
+<br >
+<button (click)="upload(file)" class="btn btn-info">Upload</button>
+<br >
+<br >
+
+<span *ngFor="let img of arr">
+    <img src="{{ img }}" height="100" width="100"/>
+</span>
